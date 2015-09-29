@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Assignment1</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_single">SingleActivity</string>
+    <string name="title_activity_multiple">MultipleActivity</string>
+    <string name="single_text_ready">Ready</string>
+    <string name="single_text_start">start</string>
+    <string name="title_activity_statics">StaticsActivity</string>
+    <string name="title_activity_twoplayer">TwoplayerActivity</string>
+    <string name="title_activity_threeplayer">ThreeplayerActivity</string>
+    <string name="title_activity_fourplayer">FourplayerActivity</string>
+
+
+
+</resources>
