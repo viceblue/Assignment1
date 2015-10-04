@@ -1,16 +1,59 @@
 package com.example.hzhu6.assignment1;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 
 public class TwoplayerActivity extends ActionBarActivity {
-
+    private save_loadsystem tworesults = new save_loadsystem();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_twoplayer);
+
+        final Button optbutton = (Button)findViewById(R.id.playeroneoftwo);
+        final Button tptbutton = (Button)findViewById(R.id.playertwooftwo);
+        final AlertDialog.Builder powin = new AlertDialog.Builder(TwoplayerActivity.this);
+        powin.setMessage("Player1 has won this game");
+        powin.setNegativeButton("restart", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        final AlertDialog.Builder ptwin = new AlertDialog.Builder(TwoplayerActivity.this);
+        ptwin.setMessage("Player2 has won this game");
+        ptwin.setNegativeButton("restart", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        optbutton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {// new added
+                powin.show();
+                tworesults.getResults().addOneoftwo();
+                //tworesults.saveInFile();
+                setResult(RESULT_OK);
+            }
+        });
+
+        tptbutton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {// new added
+                ptwin.show();
+                setResult(RESULT_OK);
+            }
+        });
+
+
+
     }
 
     @Override
@@ -34,4 +77,9 @@ public class TwoplayerActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+
 }

@@ -4,13 +4,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class StaticsActivity extends ActionBarActivity {
+    private save_loadsystem staticdata = new save_loadsystem();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statics);
+
+        final TextView staticlayout= (TextView)findViewById(R.id.staticsdisplay);
+        staticlayout.setText("aaa" + Integer.toString(staticdata.getResults().getOneoftwo()));
     }
 
     @Override
