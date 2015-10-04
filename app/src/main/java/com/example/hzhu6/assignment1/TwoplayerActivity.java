@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 
 public class TwoplayerActivity extends ActionBarActivity {
-    private save_loadsystem tworesults = new save_loadsystem();
+    private save_loadsystem tworesults = new save_loadsystem(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,9 @@ public class TwoplayerActivity extends ActionBarActivity {
 
         final Button optbutton = (Button)findViewById(R.id.playeroneoftwo);
         final Button tptbutton = (Button)findViewById(R.id.playertwooftwo);
+        final TextView aaa= (TextView)findViewById(R.id.xxx);
+
+
         final AlertDialog.Builder powin = new AlertDialog.Builder(TwoplayerActivity.this);
         powin.setMessage("Player1 has won this game");
         powin.setNegativeButton("restart", new DialogInterface.OnClickListener() {
@@ -39,8 +42,9 @@ public class TwoplayerActivity extends ActionBarActivity {
         optbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 powin.show();
-                tworesults.getResults().addOneoftwo();
-                //tworesults.saveInFile();
+                tworesults.loadFromFile(TwoplayerActivity.this);
+                tworesults.getalldata().addOneoftwo();
+                tworesults.saveInFile(TwoplayerActivity.this);
                 setResult(RESULT_OK);
             }
         });
@@ -48,6 +52,9 @@ public class TwoplayerActivity extends ActionBarActivity {
         tptbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 ptwin.show();
+                tworesults.loadFromFile(TwoplayerActivity.this);
+                tworesults.getalldata().addTwooftwo();
+                tworesults.saveInFile(TwoplayerActivity.this);
                 setResult(RESULT_OK);
             }
         });

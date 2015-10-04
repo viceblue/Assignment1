@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class ThreeplayerActivity extends ActionBarActivity {
-
+    private save_loadsystem threeresults = new save_loadsystem(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +48,9 @@ public class ThreeplayerActivity extends ActionBarActivity {
         opthbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 powin.show();
+                threeresults.loadFromFile(ThreeplayerActivity.this);
+                threeresults.getalldata().addOneofthree();
+                threeresults.saveInFile(ThreeplayerActivity.this);
                 setResult(RESULT_OK);
             }
         });
@@ -55,6 +58,9 @@ public class ThreeplayerActivity extends ActionBarActivity {
         tpthbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 ptwin.show();
+                threeresults.loadFromFile(ThreeplayerActivity.this);
+                threeresults.getalldata().addTwoofthree();
+                threeresults.saveInFile(ThreeplayerActivity.this);
                 setResult(RESULT_OK);
             }
         });
@@ -62,6 +68,9 @@ public class ThreeplayerActivity extends ActionBarActivity {
         thpthbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 pthwin.show();
+                threeresults.loadFromFile(ThreeplayerActivity.this);
+                threeresults.getalldata().addThreeofthree();
+                threeresults.saveInFile(ThreeplayerActivity.this);
                 setResult(RESULT_OK);
             }
         });

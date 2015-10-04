@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class SingleActivity extends ActionBarActivity {
     private boolean isclicked = false;
-    private save_loadsystem singleresult = new save_loadsystem();
+    private save_loadsystem singleresult = new save_loadsystem(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //int flag =0;
@@ -79,7 +79,10 @@ public class SingleActivity extends ActionBarActivity {
                         }else {
                             double endtime = singletimer.endTimer();
                             isclicked = false;
-                                singlemode_display.setText(Double.toString(endtime));
+                            singlemode_display.setText(Double.toString(endtime));
+                            singleresult.loadFromFile(SingleActivity.this);
+                            singleresult.getalldata().getSingle_result().add(endtime);
+                            singleresult.saveInFile(SingleActivity.this);
                         }
                         buzzbutton.setText("RESTART");
                     }

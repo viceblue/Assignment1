@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class FourplayerActivity extends ActionBarActivity {
-
+    private save_loadsystem fourresults = new save_loadsystem(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +61,9 @@ public class FourplayerActivity extends ActionBarActivity {
         opfbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 powin.show();
+                fourresults.loadFromFile(FourplayerActivity.this);
+                fourresults.getalldata().addOneoffour();
+                fourresults.saveInFile(FourplayerActivity.this);
                 setResult(RESULT_OK);
             }
         });
@@ -68,6 +71,9 @@ public class FourplayerActivity extends ActionBarActivity {
         tpfbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 ptwin.show();
+                fourresults.loadFromFile(FourplayerActivity.this);
+                fourresults.getalldata().addTwooffour();
+                fourresults.saveInFile(FourplayerActivity.this);
                 setResult(RESULT_OK);
             }
         });
@@ -75,6 +81,9 @@ public class FourplayerActivity extends ActionBarActivity {
         thpfbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 pthwin.show();
+                fourresults.loadFromFile(FourplayerActivity.this);
+                fourresults.getalldata().addThreeoffour();
+                fourresults.saveInFile(FourplayerActivity.this);
                 setResult(RESULT_OK);
             }
         });
@@ -82,6 +91,9 @@ public class FourplayerActivity extends ActionBarActivity {
         fpfbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 pfwin.show();
+                fourresults.loadFromFile(FourplayerActivity.this);
+                fourresults.getalldata().addFouroffour();
+                fourresults.saveInFile(FourplayerActivity.this);
                 setResult(RESULT_OK);
             }
         });

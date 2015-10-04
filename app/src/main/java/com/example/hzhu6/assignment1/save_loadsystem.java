@@ -19,52 +19,52 @@ import java.util.ArrayList;
 /**
  * Created by hzhu6 on 10/3/15.
  */
-public class save_loadsystem extends Activity{
+public class save_loadsystem{
 
     private static final String FILENAME = "file.sav";
-    private dataunit results = new dataunit();
+    private dataunit alldata = new dataunit();
 
 
-    public dataunit getResults() {
-        return results;
+    public dataunit getalldata() {
+        return alldata;
     }
 
-    public save_loadsystem() {
-        //results.clear();
+    public save_loadsystem(Context context) {
+        //this.loadFromFile(context);
     }
 
     public void cleardata(){
-        results.clear();
+        alldata.clear();
     }
 
 
-    public void  loadFromFile() {
+    public void  loadFromFile(Context context) {
         //ArrayList<String> tweets = new ArrayList<String>();
         try {
-            FileInputStream fis = openFileInput(FILENAME);
+            FileInputStream fis = context.openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             Gson gson = new Gson();
             Type listType = new TypeToken<dataunit>() {}.getType();
             //take from https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html
-            results =gson.fromJson(in, listType);
+            alldata =gson.fromJson(in, listType);
 
 
 
         } catch (FileNotFoundException e) {
-            results = new dataunit();
+            alldata = new dataunit();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         //return tweets.toArray(new String[tweets.size()]);
     }
-    public void saveInFile() {//somthing wrong happens here
+    public void saveInFile(Context context) {//somthing wrong happens here
         try {
-            FileOutputStream fos = openFileOutput(FILENAME,
+            FileOutputStream fos = context.openFileOutput(FILENAME,
                     0);
             OutputStreamWriter writer= new OutputStreamWriter(fos);
             Gson gson =new Gson();
-            gson.toJson(this.results, writer);
+            gson.toJson(this.alldata, writer);
             writer.flush();
             fos.close();
         } catch (FileNotFoundException e) {
