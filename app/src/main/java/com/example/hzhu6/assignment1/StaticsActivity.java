@@ -46,10 +46,10 @@ public class StaticsActivity extends ActionBarActivity {
                         "player2 in 4-player " + Integer.toString(staticdata.getalldata().getTwooffour()) + "\n" +
                         "player3 in 4-player " + Integer.toString(staticdata.getalldata().getThreeoffour()) + "\n" +
                         "player4 in 4-player " + Integer.toString(staticdata.getalldata().getFouroffour()) + "\n"
-        );
+        );//display static text
 
         clearbutton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {// new added
+            public void onClick(View v) {// clearbutton movement,after pressed, clear all old data, also erase file, and display new data
                 //do something
                 setResult(RESULT_OK);
                 staticdata.cleardata();
@@ -82,7 +82,7 @@ public class StaticsActivity extends ActionBarActivity {
         });
 
         emailbutton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {// new added
+            public void onClick(View v) {// email button movement
                 //do something
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");

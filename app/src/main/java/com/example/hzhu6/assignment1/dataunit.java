@@ -6,7 +6,7 @@ import java.util.Collections;
 /**
  * Created by hzhu6 on 10/3/15.
  */
-public class dataunit {
+public class dataunit {//data unit is the data that going to be stored in file
     private ArrayList<Double> single_result= new ArrayList<Double>();
     private int oneoftwo = 0;
     private int twooftwo = 0;
@@ -25,7 +25,7 @@ public class dataunit {
 
     public void addOneoftwo() {
         oneoftwo++;
-    }
+    }//these adders allows modifications from outside of the class, but in a pre-defined way, safe
 
     public void addTwooftwo() {
         twooftwo++;
@@ -61,7 +61,7 @@ public class dataunit {
 
     public int getOneoftwo() {
         return oneoftwo;
-    }
+    }// these getters are just getters, I used magic to generated them
 
     public int getTwooftwo() {
         return twooftwo;
@@ -110,7 +110,7 @@ public class dataunit {
             return single_result;
         }
     }
-
+//some function for static data
     public double lasttenmax() {
         if(cloneAL(10).size()!=0) {
             return Collections.max(cloneAL(10));
@@ -199,7 +199,7 @@ public class dataunit {
         }
     }
 
-    public dataunit() {
+    public dataunit() {//defult constructor
         single_result= new ArrayList<Double>();
         oneoftwo = 0;
         twooftwo = 0;

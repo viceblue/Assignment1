@@ -19,7 +19,7 @@ import java.util.ArrayList;
 /**
  * Created by hzhu6 on 10/3/15.
  */
-public class save_loadsystem{
+public class save_loadsystem{ //as named, save and load system, contains data unit, and also some method to access file
 
     private static final String FILENAME = "file.sav";
     private dataunit alldata = new dataunit();
@@ -38,7 +38,7 @@ public class save_loadsystem{
     }
 
 
-    public void  loadFromFile(Context context) {
+    public void  loadFromFile(Context context) {// basicaly copy from lonely tweeter
         //ArrayList<String> tweets = new ArrayList<String>();
         try {
             FileInputStream fis = context.openFileInput(FILENAME);
@@ -56,9 +56,9 @@ public class save_loadsystem{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        //return tweets.toArray(new String[tweets.size()]);
+
     }
-    public void saveInFile(Context context) {//somthing wrong happens here
+    public void saveInFile(Context context) {// basicaly copy from lonely tweeter
         try {
             FileOutputStream fos = context.openFileOutput(FILENAME,
                     0);

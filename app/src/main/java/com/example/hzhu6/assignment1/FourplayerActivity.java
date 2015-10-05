@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class FourplayerActivity extends ActionBarActivity {
+public class FourplayerActivity extends ActionBarActivity {//basically same as two and three mode
     private save_loadsystem fourresults = new save_loadsystem(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {

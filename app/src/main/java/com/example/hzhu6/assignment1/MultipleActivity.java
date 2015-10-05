@@ -22,7 +22,7 @@ public class MultipleActivity extends ActionBarActivity {
             public void onClick(View v) {// new added
                 //do something
                 setResult(RESULT_OK);
-                twomode(v);
+                twomode(v);//click the button and leads to the activity
             }
         });
 
@@ -31,7 +31,7 @@ public class MultipleActivity extends ActionBarActivity {
             public void onClick(View v) {// new added
                 //do something
                 setResult(RESULT_OK);
-                threemode(v);
+                threemode(v);//click the button and leads to the activity
             }
         });
 
@@ -39,7 +39,7 @@ public class MultipleActivity extends ActionBarActivity {
             public void onClick(View v) {// new added
                 //do something
                 setResult(RESULT_OK);
-                fourmode(v);
+                fourmode(v);//click the button and leads to the activity
             }
         });
 

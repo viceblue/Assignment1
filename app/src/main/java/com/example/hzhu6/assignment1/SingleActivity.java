@@ -47,7 +47,7 @@ public class SingleActivity extends ActionBarActivity {
 
 
 
-        n = rand.nextInt(1990) + 10;
+        n = rand.nextInt(1990) + 10; //get a random latency number
 
 
 
@@ -55,33 +55,33 @@ public class SingleActivity extends ActionBarActivity {
         buzzbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 //do something
-                final CountDownTimer ctime = new CountDownTimer(n , 10) {
+                final CountDownTimer ctime = new CountDownTimer(n , 10) {//set up count down timer
 
                     public void onTick(long millisUntilFinished) {
-                        //singlemode_display.setText("seconds remaining: " + millisUntilFinished / 100);
+
                     }
 
                     public void onFinish() {
-                        singlemode_display.setText("click now");
+                        singlemode_display.setText("click now");// if count down timer successfully finished, tell user to click, and start to calculate time difference
                         singletimer.startTimer();
                     }
 
                 };
 
-                if (isclicked == false) {
+                if (isclicked == false) {// one button two action, use isclicked as flag
                         singlemode_display.setText(" ");
                         ctime.start();
                         isclicked = true;
 
                         buzzbutton.setText("STOP!");
                     } else {
-                        if(singlemode_display.getText()!="click now"){
+                        if(singlemode_display.getText()!="click now"){//camplain when I have not told you to click
                             ctime.cancel();
                             singlemode_display.setText("too early");
                             isclicked = false;
 
                         }else {
-                            double endtime = singletimer.endTimer();
+                            double endtime = singletimer.endTimer();//successful movement. recourd data
                             isclicked = false;
                             n = rand.nextInt(1990) + 10;
                             singlemode_display.setText(Double.toString(endtime)+"ms");

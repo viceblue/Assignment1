@@ -22,7 +22,7 @@ public class TwoplayerActivity extends ActionBarActivity {
         final Button tptbutton = (Button)findViewById(R.id.playertwooftwo);
 
 
-        final AlertDialog.Builder powin = new AlertDialog.Builder(TwoplayerActivity.this);
+        final AlertDialog.Builder powin = new AlertDialog.Builder(TwoplayerActivity.this);//set up player 1 win report
         powin.setMessage("Player1 has won this game");
         powin.setNegativeButton("restart", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -30,7 +30,7 @@ public class TwoplayerActivity extends ActionBarActivity {
             }
         });
 
-        final AlertDialog.Builder ptwin = new AlertDialog.Builder(TwoplayerActivity.this);
+        final AlertDialog.Builder ptwin = new AlertDialog.Builder(TwoplayerActivity.this);//set up player 2 win report
         ptwin.setMessage("Player2 has won this game");
         ptwin.setNegativeButton("restart", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -41,9 +41,9 @@ public class TwoplayerActivity extends ActionBarActivity {
         optbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 powin.show();
-                tworesults.loadFromFile(TwoplayerActivity.this);
-                tworesults.getalldata().addOneoftwo();
-                tworesults.saveInFile(TwoplayerActivity.this);
+                tworesults.loadFromFile(TwoplayerActivity.this);//load old stat-data
+                tworesults.getalldata().addOneoftwo();//accumlate to data
+                tworesults.saveInFile(TwoplayerActivity.this);//save as new data
                 setResult(RESULT_OK);
             }
         });
@@ -51,9 +51,9 @@ public class TwoplayerActivity extends ActionBarActivity {
         tptbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 ptwin.show();
-                tworesults.loadFromFile(TwoplayerActivity.this);
-                tworesults.getalldata().addTwooftwo();
-                tworesults.saveInFile(TwoplayerActivity.this);
+                tworesults.loadFromFile(TwoplayerActivity.this);//load old stat-data
+                tworesults.getalldata().addTwooftwo();//accumlate to data
+                tworesults.saveInFile(TwoplayerActivity.this);//save as new data
                 setResult(RESULT_OK);
             }
         });

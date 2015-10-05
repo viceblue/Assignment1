@@ -24,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {// new added
                 //do something
                 setResult(RESULT_OK);
-                singlemode(v);
+                singlemode(v);//click the button and leads to the activity
             }
         });
 
@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {// new added
                 //do something
                 setResult(RESULT_OK);
-                multimode(v);
+                multimode(v);//click the button and leads to the activity
             }
         });
 
@@ -41,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {// new added
                 //do something
                 setResult(RESULT_OK);
-                statics(v);
+                statics(v);//click the button and leads to the activity
             }
         });
 

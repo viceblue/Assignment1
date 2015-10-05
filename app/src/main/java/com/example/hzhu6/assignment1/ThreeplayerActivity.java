@@ -20,7 +20,7 @@ public class ThreeplayerActivity extends ActionBarActivity {
         final Button tpthbutton = (Button)findViewById(R.id.playertwoofthree);
         final Button thpthbutton = (Button)findViewById(R.id.playerthreeofthree);
 
-        final AlertDialog.Builder powin = new AlertDialog.Builder(ThreeplayerActivity.this);
+        final AlertDialog.Builder powin = new AlertDialog.Builder(ThreeplayerActivity.this);//set up wining info
         powin.setMessage("Player1 has won this game");
         powin.setNegativeButton("restart", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -28,7 +28,7 @@ public class ThreeplayerActivity extends ActionBarActivity {
             }
         });
 
-        final AlertDialog.Builder ptwin = new AlertDialog.Builder(ThreeplayerActivity.this);
+        final AlertDialog.Builder ptwin = new AlertDialog.Builder(ThreeplayerActivity.this);//set up wining info
         ptwin.setMessage("Player2 has won this game");
         ptwin.setNegativeButton("restart", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -36,7 +36,7 @@ public class ThreeplayerActivity extends ActionBarActivity {
             }
         });
 
-        final AlertDialog.Builder pthwin = new AlertDialog.Builder(ThreeplayerActivity.this);
+        final AlertDialog.Builder pthwin = new AlertDialog.Builder(ThreeplayerActivity.this);//set up wining info
         pthwin.setMessage("Player3 has won this game");
         pthwin.setNegativeButton("restart", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -49,7 +49,7 @@ public class ThreeplayerActivity extends ActionBarActivity {
             public void onClick(View v) {// new added
                 powin.show();
                 threeresults.loadFromFile(ThreeplayerActivity.this);
-                threeresults.getalldata().addOneofthree();
+                threeresults.getalldata().addOneofthree();           //load old data, add one to wining count, save back to file
                 threeresults.saveInFile(ThreeplayerActivity.this);
                 setResult(RESULT_OK);
             }
@@ -59,7 +59,7 @@ public class ThreeplayerActivity extends ActionBarActivity {
             public void onClick(View v) {// new added
                 ptwin.show();
                 threeresults.loadFromFile(ThreeplayerActivity.this);
-                threeresults.getalldata().addTwoofthree();
+                threeresults.getalldata().addTwoofthree();//load old data, add one to wining count, save back to file
                 threeresults.saveInFile(ThreeplayerActivity.this);
                 setResult(RESULT_OK);
             }
@@ -69,7 +69,7 @@ public class ThreeplayerActivity extends ActionBarActivity {
             public void onClick(View v) {// new added
                 pthwin.show();
                 threeresults.loadFromFile(ThreeplayerActivity.this);
-                threeresults.getalldata().addThreeofthree();
+                threeresults.getalldata().addThreeofthree();//load old data, add one to wining count, save back to file
                 threeresults.saveInFile(ThreeplayerActivity.this);
                 setResult(RESULT_OK);
             }
