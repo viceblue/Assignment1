@@ -11,12 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
 public class SingleActivity extends ActionBarActivity {
     private boolean isclicked = false;
     private save_loadsystem singleresult = new save_loadsystem(this);
+    private Random rand = new Random();
+    private int  n;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //int flag =0;
@@ -40,22 +44,10 @@ public class SingleActivity extends ActionBarActivity {
         intro.show();
         //end intro alertdialog
 
-        Random rand = new Random();
 
-        int  n = rand.nextInt(1990) + 10;
 
-        final CountDownTimer ctime = new CountDownTimer(n , 10) {
 
-                            public void onTick(long millisUntilFinished) {
-                                //singlemode_display.setText("seconds remaining: " + millisUntilFinished / 100);
-                            }
-
-                            public void onFinish() {
-                                singlemode_display.setText("click now");
-                                singletimer.startTimer();
-                            }
-
-        };
+        n = rand.nextInt(1990) + 10;
 
 
 
@@ -63,9 +55,21 @@ public class SingleActivity extends ActionBarActivity {
         buzzbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {// new added
                 //do something
+                final CountDownTimer ctime = new CountDownTimer(n , 10) {
 
-                    if (isclicked == false) {
-                        singlemode_display.setText("0");
+                    public void onTick(long millisUntilFinished) {
+                        //singlemode_display.setText("seconds remaining: " + millisUntilFinished / 100);
+                    }
+
+                    public void onFinish() {
+                        singlemode_display.setText("click now");
+                        singletimer.startTimer();
+                    }
+
+                };
+
+                if (isclicked == false) {
+                        singlemode_display.setText(" ");
                         ctime.start();
                         isclicked = true;
 
@@ -79,9 +83,10 @@ public class SingleActivity extends ActionBarActivity {
                         }else {
                             double endtime = singletimer.endTimer();
                             isclicked = false;
-                            singlemode_display.setText(Double.toString(endtime));
+                            n = rand.nextInt(1990) + 10;
+                            singlemode_display.setText(Double.toString(endtime)+"ms");
                             singleresult.loadFromFile(SingleActivity.this);
-                            singleresult.getalldata().getSingle_result().add(endtime);
+                            singleresult.getalldata().addtosingle(endtime);
                             singleresult.saveInFile(SingleActivity.this);
                         }
                         buzzbutton.setText("RESTART");
@@ -90,7 +95,6 @@ public class SingleActivity extends ActionBarActivity {
                 setResult(RESULT_OK);
             }
         });
-
 
     }
 

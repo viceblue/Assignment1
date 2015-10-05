@@ -1,6 +1,7 @@
 package com.example.hzhu6.assignment1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by hzhu6 on 10/3/15.
@@ -96,6 +97,106 @@ public class dataunit {
 
     public ArrayList<Double> getSingle_result() {
         return single_result;
+    }
+
+    private ArrayList<Double> cloneAL(int n){
+        ArrayList<Double> T = new ArrayList<Double>();
+        if(single_result.size()>n) {
+            for (int i = 0; i < n; i++) {
+                T.add(single_result.get(n - i));           //clone a double array of single_result
+            }
+            return T;
+        }else{
+            return single_result;
+        }
+    }
+
+    public double lasttenmax() {
+        if(cloneAL(10).size()!=0) {
+            return Collections.max(cloneAL(10));
+        }else{
+            return 0;
+        }
+    }
+
+    public double lasthandredmax() {
+        if(cloneAL(100).size()!=0) {
+            return Collections.max(cloneAL(100));
+        }else{
+            return 0;
+        }
+    }
+
+    public double lasttenmin() {
+        if(cloneAL(10).size()!=0) {
+            return Collections.min(cloneAL(10));
+        }else{
+            return 0;
+        }
+    }
+
+    public double lasthandredmin() {
+        if(cloneAL(100).size()!=0) {
+            return Collections.min(cloneAL(100));
+        }else{
+            return 0;
+        }
+    }
+
+    public double lasttenaverage() {
+        double sum=0;
+        int n = cloneAL(10).size();
+        if(n!=0) {
+            for (int i = 0; i < n; i++) {
+                sum += cloneAL(10).get(i);
+            }
+            return sum / n;
+        }else{
+            return 0;
+        }
+    }
+
+    public double lasthandredaverage() {
+        double sum=0;
+        int n = cloneAL(100).size();
+        if(n!=0) {
+            for (int i = 0; i < n; i++) {
+                sum += cloneAL(100).get(i);
+            }
+            return sum / n;
+        }else{
+            return 0;
+        }
+    }
+
+    public double lasttenmedian() {
+        ArrayList<Double> T = cloneAL(10);
+        Collections.sort(T);
+        int n = T.size();
+        if(n!=0) {
+            if ((n)%2 == 0) {
+                return (T.get((n/2)-1) + T.get((n/2)))/2;
+            } else {
+                return T.get((n/2));
+            }
+        }else{
+            return 0;
+        }
+    }
+
+    public double lasthandredmedian() {
+        ArrayList<Double> T = cloneAL(100);
+        Collections.sort(T);
+        int n = T.size();
+        if(n!=0) {
+            if ((n)%2 == 0) {
+                return (T.get((n/2)-1) + T.get((n/2)))/2;
+            } else {
+                return T.get((n/2));
+            }
+        }else{
+            return 0;
+        }
     }
 
     public dataunit() {

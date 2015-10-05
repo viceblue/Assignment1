@@ -1,5 +1,6 @@
 package com.example.hzhu6.assignment1;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StaticsActivity extends ActionBarActivity {
     private save_loadsystem staticdata = new save_loadsystem(this);
@@ -21,7 +23,20 @@ public class StaticsActivity extends ActionBarActivity {
 
         final TextView staticlayout= (TextView)findViewById(R.id.staticsdisplay);
         staticdata.loadFromFile(StaticsActivity.this);
-        staticlayout.setText("Single player results " +
+        staticlayout.setText("Single player results:" + "\n" +
+                        "minimum time of all reaction times:\n" +
+                        "last 10 times:  " + Double.toString(staticdata.getalldata().lasttenmin()) + "ms\n" +
+                        "last 100 times:  " + Double.toString(staticdata.getalldata().lasthandredmin()) + "ms\n" +
+                        "maximum time of all reaction times:\n" +
+                        "last 10 times:  " + Double.toString(staticdata.getalldata().lasttenmax()) + "ms\n" +
+                        "last 100 times:  " + Double.toString(staticdata.getalldata().lasthandredmax()) + "ms\n" +
+                        "average time of all reaction times:\n" +
+                        "last 10 times:  " + Double.toString(staticdata.getalldata().lasttenaverage()) + "ms\n" +
+                        "last 100 times:  " + Double.toString(staticdata.getalldata().lasthandredaverage()) + "ms\n" +
+                        "median time of all reaction times: \n" +
+                        "last 10 times:  " + Double.toString(staticdata.getalldata().lasttenmedian()) + "ms\n" +
+                        "last 100 times:  " + Double.toString(staticdata.getalldata().lasthandredmedian()) + "ms\n" +
+                        "Multi-player results\n" +
                         "player1 in 2-player " + Integer.toString(staticdata.getalldata().getOneoftwo()) + "\n" +
                         "player2 in 2-player " + Integer.toString(staticdata.getalldata().getTwooftwo()) + "\n" +
                         "player1 in 3-player " + Integer.toString(staticdata.getalldata().getOneofthree()) + "\n" +
@@ -39,7 +54,20 @@ public class StaticsActivity extends ActionBarActivity {
                 setResult(RESULT_OK);
                 staticdata.cleardata();
                 staticdata.saveInFile(StaticsActivity.this);
-                staticlayout.setText("Single player results " +"\n"+
+                staticlayout.setText("Single player results:" + "\n" +
+                                "minimum time of all reaction times:\n" +
+                                "last 10 times:  " + Double.toString(staticdata.getalldata().lasttenmin()) + "ms\n" +
+                                "last 100 times:  " + Double.toString(staticdata.getalldata().lasthandredmin()) + "ms\n" +
+                                "maximum time of all reaction times:\n" +
+                                "last 10 times:  " + Double.toString(staticdata.getalldata().lasttenmax()) + "ms\n" +
+                                "last 100 times:  " + Double.toString(staticdata.getalldata().lasthandredmax()) + "ms\n" +
+                                "average time of all reaction times:\n" +
+                                "last 10 times:  " + Double.toString(staticdata.getalldata().lasttenaverage()) + "ms\n" +
+                                "last 100 times:  " + Double.toString(staticdata.getalldata().lasthandredaverage()) + "ms\n" +
+                                "median time of all reaction times: \n" +
+                                "last 10 times:  " + Double.toString(staticdata.getalldata().lasttenmedian()) + "ms\n" +
+                                "last 100 times:  " + Double.toString(staticdata.getalldata().lasthandredmedian()) + "ms\n" +
+                                "Multi-player results\n" +
                                 "player1 in 2-player " + Integer.toString(staticdata.getalldata().getOneoftwo()) + "\n" +
                                 "player2 in 2-player " + Integer.toString(staticdata.getalldata().getTwooftwo()) + "\n" +
                                 "player1 in 3-player " + Integer.toString(staticdata.getalldata().getOneofthree()) + "\n" +
@@ -53,7 +81,21 @@ public class StaticsActivity extends ActionBarActivity {
             }
         });
 
+        emailbutton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {// new added
+                //do something
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_SUBJECT, "Buzzer results");
+                i.putExtra(Intent.EXTRA_TEXT, staticlayout.getText());
 
+                try {
+                    startActivity(Intent.createChooser(i, "Send mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(StaticsActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 

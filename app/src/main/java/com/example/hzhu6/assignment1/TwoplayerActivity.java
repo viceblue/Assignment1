@@ -20,7 +20,6 @@ public class TwoplayerActivity extends ActionBarActivity {
 
         final Button optbutton = (Button)findViewById(R.id.playeroneoftwo);
         final Button tptbutton = (Button)findViewById(R.id.playertwooftwo);
-        final TextView aaa= (TextView)findViewById(R.id.xxx);
 
 
         final AlertDialog.Builder powin = new AlertDialog.Builder(TwoplayerActivity.this);
