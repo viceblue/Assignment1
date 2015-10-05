@@ -6,7 +6,8 @@ This application can be started by clicking the app "traval-expense" in the luan
 This app is a simple game buzzer. It contains 2 modes
  1. singleplayer: allows the user to react follow the instruction and record reaction time
  2. multiplayer: allows up to 4 players to play in the same screen and the first clicker will be reported via alertdialog
- It also hepls the user to see the game statics by click "statics" in main screem. The results are sorted by modes, and can be sent via email.
+ 
+It also hepls the user to see the game statics by click "statics" in main screem. The results are sorted by modes, and can be sent via email.
 
 clone url: https://github.com/viceblue/Assignment1.git
 
